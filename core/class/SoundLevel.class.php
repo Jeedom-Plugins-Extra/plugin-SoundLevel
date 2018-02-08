@@ -58,7 +58,7 @@ class SoundLevel extends eqLogic {
             $cmd->setName(__('niveau', __FILE__));
         }
         $cmd->setType('info');
-        $cmd->setSubType('numeric');
+        $cmd->setSubType('string');
         $cmd->setEqLogic_id($this->getId());
         $cmd->setDisplay('generic_type', 'ENERGY_STATE');
         $cmd->save();
