@@ -1,0 +1,14 @@
+{
+	"id" : "SoundLevel",
+	"name" : "Sound Pressure Level",
+	"description" : "Plugin mesurant le niveau sonore d'une piece",
+	"licence" : "AGPL",
+	"author" : "Byackee",
+	"require" : "3.0",
+	"category" : "multimedia",
+	"hasDependency" : false,
+	"hasOwnDeamon" : false,
+	"maxDependancyInstallTime" : 0,
+	"changelog" : "",
+	"documentation" : ""
+}
