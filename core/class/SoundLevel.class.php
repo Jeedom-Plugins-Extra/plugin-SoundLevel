@@ -72,7 +72,7 @@ class SoundLevel extends eqLogic {
                   throw new Exception(__('La carte audio doit etre renseignée, tapez la commande arecord -l pour identifier', __FILE__));
               }
       if ($this->getConfiguration('duration') == '') {
-                  throw new Exception(__('Veuillez entrer la durée d\'enregistrement', __FILE__));
+                  throw new Exception(__('Veuillez entrer la durée denregistrement', __FILE__));
               }
     }
 
@@ -110,9 +110,9 @@ class SoundLevel extends eqLogic {
     public function getInfo() {
         $this->checkSoundLevelStatus();
 
-        $power_state=shell_exec("sudo sh ../../3rparty/SPL.sh".$this->getConfiguration('carte audio')." ".$this->getConfiguration('duration'));
+        $niveau=shell_exec("sudo sh ../../3rparty/SPL.sh".$this->getConfiguration('carte audio')." ".$this->getConfiguration('duration'));
 
-        return array('power_state' => $power_state);
+        return array('niveau' => $niveau);
     }
 
     public function updateInfo() {
@@ -145,23 +145,4 @@ class SoundLevel extends eqLogic {
 }
 
 class SoundLevel extends cmd {
-    /*     * *************************Attributs****************************** */
-
-
-    /*     * ***********************Methode static*************************** */
-
-
-    /*     * *********************Methode d'instance************************* */
-
-    /*
-     * Non obligatoire permet de demander de ne pas supprimer les commandes même si elles ne sont pas dans la nouvelle configuration de l'équipement envoyé en JS
-      public function dontRemoveCmd() {
-      return true;
-      }
-     */
-
-    public function execute($_options = array()) {
-    }
-
-    /*     * **********************Getteur Setteur*************************** */
 }
