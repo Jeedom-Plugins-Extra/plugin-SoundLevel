@@ -126,4 +126,11 @@ class SoundLevel extends eqLogic {
 }
 
 class SoundLevel extends cmd {
+  public function execute($_options = array()) {
+      $eqLogic = $this->getEqLogic();
+
+      $eqLogic->checkSoundLevelStatus();
+
+      $eqLogic->updateInfo();
+  }
 }
