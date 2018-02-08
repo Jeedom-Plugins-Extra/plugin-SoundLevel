@@ -110,7 +110,10 @@ foreach (object::all() as $object) {
         <div class="col-sm-3">
             <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="carte audio" />
         </div>
-
+				<label class="col-sm-3 control-label">{{duration}}</label>
+				<div class="col-sm-3">
+            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="duration" />
+        </div>
     </div>
 </fieldset>
 </form>
