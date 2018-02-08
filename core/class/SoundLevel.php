@@ -71,6 +71,9 @@ class SoundLevel extends eqLogic {
       if ($this->getConfiguration('carte audio') == '') {
                   throw new Exception(__('La carte audio doit etre renseignée, tapez la commande arecord -l pour identifier', __FILE__));
               }
+      if ($this->getConfiguration('duration') == '') {
+                  throw new Exception(__('Veuillez entrer la durée d\'enregistrement', __FILE__));
+              }
     }
 
     public function postUpdate() {
@@ -107,7 +110,7 @@ class SoundLevel extends eqLogic {
     public function getInfo() {
         $this->checkSoundLevelStatus();
 
-        $power_state=shell_exec("sudo sh ../../3rparty/SPL.sh");
+        $power_state=shell_exec("sudo sh ../../3rparty/SPL.sh".$this->getConfiguration('carte audio')." ".$this->getConfiguration('duration'));
 
         return array('power_state' => $power_state);
     }
@@ -131,16 +134,11 @@ class SoundLevel extends eqLogic {
     }
 
     public function checkSoundLevelStatus() {
-        #$check=shell_exec("sudo adb devices | grep ".$this->getConfiguration('ip')." | cut -f2 | xargs");
-      	#echo $check;
-        #if(strstr($check, "offline"))
-        #    throw new Exception("Votre appareil est détectée 'offline' par ADB.", 1);
-        #if(!strstr($check, "device")) {
-            #shell_exec("sudo adb kill-server");
-            #shell_exec("sudo adb start-server");
-            #shell_exec("sudo adb connect ".$eqLogic->getConfiguration('ip'));
-        #    throw new Exception("Votre appareil est non détectée par ADB.", 1);
-        }
+      $check=shell_exec("sudo aplay -l");
+      echo $check;
+      if(strstr($check, "no soundcards found")){
+          throw new Exception("Aucune carte son detecté", 1);
+      }
     }
 
     /*     * **********************Getteur Setteur*************************** */
